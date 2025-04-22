@@ -81,6 +81,7 @@ public class TaskController {
     public List<Task> byResponsible(@RequestParam String name) {
         return taskService.findByResponsible(name);
     }
+
     // get tasks by title
     @GetMapping("/search")
     public List<Task> search(@RequestParam String title) {
