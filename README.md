@@ -49,9 +49,11 @@ Fiecare task poate avea 0 sau mai multe comentarii.
 
 Fiecare comentariu aparține exact unui singur task.
 
-Mai multe detalii în PDF-ul încărcat!
+ Mai multe detalii în PDF-ul încărcat!
 Am presupus că, pentru moment, nu este necesară integrarea unui sistem de utilizatori (User) în această etapă a aplicației. Task-urile sunt gestionate fără autentificare sau asociere explicită la un user dintr-o tabelă separată.
 Totuși, arhitectura aplicației este gândită în așa fel încât, dacă se dorește adăugarea ulterioară a unui model User, fără a afecta semnificativ codul existent, respectând principiile SOLID, în special principiul Open/Closed (OCP).
+
+
 ---
 
 
