@@ -53,3 +53,19 @@ Mai multe detalii în PDF-ul încărcat!
 
 
 ---
+
+
+## Testare cu Postman 
+
+| #  | Nume cerere         | Endpoint                            | Descriere                                     |
+|----|---------------------|--------------------------------------|-----------------------------------------------|
+| 1  | Create Task         | `POST /tasks`                        | Creează un task nou                           |
+| 2  | Add Subtask         | `POST /tasks/{id}/subtasks`          | Adaugă un subtask pentru un task existent     |
+| 3  | Update Task         | `PUT /tasks/{id}`                    | Actualizează datele unui task                 |
+| 4  | Add Comment         | `POST /tasks/{id}/comments`          | Adaugă un comentariu la un task               |
+| 5  | Get All Tasks       | `GET /tasks`                         | Afișează toate taskurile                      |
+| 6  | Get Task by ID      | `GET /tasks/{id}`                    | Afișează un task după ID                      |
+| 7  | Get Task by Responsible | `GET /tasks/responsible?name=Ana`    | Filtrare după responsabil                     |
+| 8  | Search by Title     | `GET /tasks/search?title=tema`      | Căutare în titlu                              |
+| 9  | Delete Task         | `DELETE /tasks/{id}`                 | Șterge un task după ID                        |
+
