@@ -6,11 +6,11 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Getter
+@Setter
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Entity
 public class Comment {
@@ -27,8 +27,9 @@ public class Comment {
     private LocalDateTime createdAt = LocalDateTime.now();
 
 
+    // Many comments can belong to one task (many-to-one relationship)
     @ManyToOne
-    @JoinColumn(name = "task_id")
+    @JoinColumn(name = "task_id")  // Foreign key column in DB
     private Task task;
 }
 
