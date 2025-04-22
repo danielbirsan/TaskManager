@@ -1,0 +1,211 @@
+{
+  "info": {
+    "name": "Task Manager API \u2013 Full Test Suite",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Postman collection covering all Task endpoints"
+  },
+  "item": [
+    {
+      "name": "1. Create Task",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Initial task\",\n  \"description\": \"Created via Postman\",\n  \"dueDate\": \"2025-05-01\",\n  \"responsible\": \"Daniel\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/tasks",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "tasks"
+          ]
+        }
+      }
+    },
+    {
+      "name": "2. Add Subtask",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Subtask A\",\n  \"description\": \"Child of task 1\",\n  \"dueDate\": \"2025-05-02\",\n  \"responsible\": \"Ana\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/tasks/1/subtasks",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "tasks",
+            "1",
+            "subtasks"
+          ]
+        }
+      }
+    },
+    {
+      "name": "3. Update Task",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Initial task UPDATED\",\n  \"description\": \"Updated via Postman\",\n  \"dueDate\": \"2025-06-01\",\n  \"responsible\": \"Daniel\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/tasks/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "tasks",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "4. Add Comment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"content\": \"This is a comment on task 1\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/tasks/1/comments",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "tasks",
+            "1",
+            "comments"
+          ]
+        }
+      }
+    },
+    {
+      "name": "5. Get All Tasks",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/tasks",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "tasks"
+          ]
+        }
+      }
+    },
+    {
+      "name": "6. Get Task by ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/tasks/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "tasks",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "7. Get Tasks by Responsible",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/tasks/responsible?name=Daniel",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "tasks",
+            "responsible"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Daniel"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "8. Search Tasks by Title Keyword",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/tasks/search?title=Initial",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "tasks",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "title",
+              "value": "Initial"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "9. Delete Task by ID",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "{{base_url}}/tasks/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "tasks",
+            "1"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080"
+    }
+  ]
+}
