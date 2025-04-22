@@ -47,7 +47,7 @@ public class TaskService {
                 });
     }
 
-    /** Delete a task and its graph (sub‑tasks + comments). */
+    // Delete a task and its graph (sub‑tasks + comments).
     @Transactional
     public void delete(Long id) {
         taskRepository.deleteById(id);

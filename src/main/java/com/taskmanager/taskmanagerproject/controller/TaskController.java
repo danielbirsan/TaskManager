@@ -19,11 +19,13 @@ public class TaskController {
 
     // ---------- CRUD ----------
 
+    // create task
     @PostMapping
     public ResponseEntity<Task> create(@RequestBody Task task) {
         return new ResponseEntity<>(taskService.create(task), HttpStatus.CREATED);
     }
 
+    // update task
     @PutMapping("/{id}")
     public ResponseEntity<Task> update(@PathVariable Long id, @RequestBody Task task) {
         return taskService.update(id, task)
@@ -31,6 +33,8 @@ public class TaskController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+
+    // delete task
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
@@ -39,6 +43,7 @@ public class TaskController {
 
     // ---------- relations ----------
 
+    // add subtask
     @PostMapping("/{id}/subtasks")
     public ResponseEntity<Task> addSubtask(@PathVariable Long id, @RequestBody Task subtask) {
         return taskService.addSubtask(id, subtask)
@@ -46,6 +51,8 @@ public class TaskController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+
+    // add comment
     @PostMapping("/{id}/comments")
     public ResponseEntity<Comment> addComment(@PathVariable Long id, @RequestBody Comment comment) {
         return taskService.addComment(id, comment)
@@ -55,11 +62,13 @@ public class TaskController {
 
     // ---------- queries ----------
 
+    // get all tasks
     @GetMapping
     public List<Task> all() {
         return taskService.findAll();
     }
 
+    // get task by id
     @GetMapping("/{id}")
     public ResponseEntity<Task> byId(@PathVariable Long id) {
         return taskService.findById(id)
@@ -67,11 +76,12 @@ public class TaskController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    // get tasks by responsible
     @GetMapping("/responsible")
     public List<Task> byResponsible(@RequestParam String name) {
         return taskService.findByResponsible(name);
     }
-
+    // get tasks by title
     @GetMapping("/search")
     public List<Task> search(@RequestParam String title) {
         return taskService.searchByTitle(title);

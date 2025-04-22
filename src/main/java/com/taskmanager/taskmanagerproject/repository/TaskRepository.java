@@ -11,5 +11,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     // Custom query: find all tasks by responsible name
     List<Task> findByResponsible(String responsible);
 
+    // Custom query: find all tasks by title containing a specific string (case insensitive)
     List<Task> findByTitleContainingIgnoreCase(String title);
 }
