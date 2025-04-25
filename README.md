@@ -71,3 +71,36 @@ Totuși, arhitectura aplicației este gândită în așa fel încât, dacă se d
 | 8  | Search by Title     | `GET /tasks/search?title=tema`      | Căutare în titlu                              |
 | 9  | Delete Task         | `DELETE /tasks/{id}`                 | Șterge un task după ID                        |
 
+
+
+### Configurare variabile de mediu (.env)
+
+Aplicația folosește biblioteca [`dotenv-java`](https://github.com/cdimascio/dotenv-java) pentru a încărca variabile de mediu dintr-un fișier `.env`, care permite păstrarea datelor sensibile (precum parola bazei de date) în afara codului sursă.
+
+#### Cum le preiau:
+
+```java
+Dotenv dotenv = Dotenv.load();
+System.setProperty("DB_URL", dotenv.get("DB_URL"));
+System.setProperty("DB_USERNAME", dotenv.get("DB_USERNAME"));
+System.setProperty("DB_PASSWORD", dotenv.get("DB_PASSWORD"));
+```
+
+Aceste variabile sunt folosite în `application.properties`:
+
+```properties
+spring.datasource.url=${DB_URL}
+spring.datasource.username=${DB_USERNAME}
+spring.datasource.password=${DB_PASSWORD}
+```
+
+#### Exemplu de fișier `.env`
+
+```
+DB_URL=jdbc:mysql://localhost:3306/taskmanager
+DB_USERNAME=root
+DB_PASSWORD=parola_ta
+```
+
+
+
